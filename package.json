@@ -1,9 +1,9 @@
 {
-	"name": "aegee-london",
+	"name": "aegee-muenchen",
 	"author": "Antonio Redondo",
-	"homepage": "https://aegee-london.eu",
-	"description": "AEGEE-London official website",
-	"repository": "antonioredondo/AEGEE-London",
+	"homepage": "https://aegee-muenchen.org",
+	"description": "AEGEE-München official website",
+	"repository": "AEGEE-Munchen/aegee-muenchen.org",
 	"license": "CC-BY-NC-ND-4.0",
 	"main": "",
 	"scripts": {
