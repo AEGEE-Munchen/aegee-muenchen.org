@@ -87,7 +87,6 @@ function init() {
 				case "intro":														moveLine(0); return 0;
 				case "who-we-are":													moveLine(1); return offsetFunctions.d0g;
 				case "activities":													moveLine(2); return offsetFunctions.d1g;
-				case "activities-in-london":
 				case "activities-around-europe":
 				case "summer-universities":
 				case "agoras":
@@ -149,27 +148,7 @@ function init() {
 	if ((hash && hash !== "#intro") || isMobile()) {
 		showTopBarEntries();
 	}
-	
-	
-	
-	// Loads the intro video if on desktop
-	if (!isMobile() && (d.getOS() === "Windows" || d.getOS() === "macOS" || d.getOS() === "Linux")) {
-		d.gc("intro__video").src = "https://www.youtube.com/embed/7x8BCbo45qA?&mute=1&controls=0&enablejsapi=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&origin=https://aegee-london.eu";
-	}
-	
-	
-	
-	// https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits
-	d.qs("a.top-bar__tab[href='#intro']").addEventListener("click", function() { ga("send", "event", "Top bar link", "click", "intro"); });
-	d.qs("a.top-bar__tab[href='#who-we-are']").addEventListener("click", function() { ga("send", "event", "Top bar link", "click", "who-we-are"); });
-	d.qs("a.top-bar__tab[href='#activities']").addEventListener("click", function() { ga("send", "event", "Top bar link", "click", "activities"); });
-	d.qs("a.top-bar__tab[href='#the-board']").addEventListener("click", function() { ga("send", "event", "Top bar link", "click", "the-board"); });
-	d.qs("a.top-bar__tab[href='#join-us']").addEventListener("click", function() { ga("send", "event", "Top bar link", "click", "join-us"); });
-	d.qs("a.top-bar__tab[href='#faq']").addEventListener("click", function() { ga("send", "event", "Top bar link", "click", "faq"); });
-	d.qs("a.top-bar__tab[href='#contact']").addEventListener("click", function() { ga("send", "event", "Top bar link", "click", "contact"); });
-	
-	
-	
+
 	// Adds general event listeners
 	let scrolled = false;
 	const distance = offsetFunctions.d0/3.5;
@@ -206,41 +185,6 @@ function init() {
 	moveLine(0, true);
 	d.gc("body").classList.add("body--in");
 }
-
-
-
-// https://developers.google.com/youtube/player_parameters
-// https://stackoverflow.com/questions/7281765/youtube-iframe-embed-auto-play
-// https://stackoverflow.com/questions/8869372/how-do-i-automatically-play-a-youtube-video-iframe-api-muted
-// https://stackoverflow.com/questions/20501010/youtube-api-onplayerready-not-firing
-function onYouTubeIframeAPIReady() { // eslint-disable-line no-unused-vars
-	const player = new YT.Player("intro__video", {
-		events: {
-			onReady: function() {
-				player.mute();
-				player.playVideo();
-			},
-			onStateChange: function(e) {
-				if (e.data === YT.PlayerState.PLAYING) {
-					d.gc("intro__video-container").classList.add("intro__video-container--in");
-					
-					// The 'end' and 'loop' YouTube parameters didn't work
-					let t = 0;
-					const id = d.si(function() {
-						player.seekTo(0);
-						if (t===2) {
-							player.pauseVideo();
-							clearInterval(id);
-						}
-						++t;
-					}, 20000);
-				}
-			}
-		}
-	});
-}
-
-
 
 d.notifyWhenLoaded(".intro__cover");
 
