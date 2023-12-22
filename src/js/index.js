@@ -143,12 +143,7 @@ function init() {
 	const width = isMobile() ? 320 : 500,
 		height = isMobile() ? 500 : 560,
 		height2 = isMobile() ? 400 : 500;
-	
-	d.gc("activities__fb-iframe").src = "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAegeeLondon%2F&tabs=events&small_header=true&hide_cover=false&show_facepile=true&width=" + width + "&height=" + height;
-	d.gc("contact__fb-iframe").src = "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAegeeLondon%2F&tabs=messages&small_header=false&hide_cover=false&show_facepile=true&width=" + width + "&height=" + height2;
-	
-	
-	
+
 	// Adapts the UI to remove intro animations if the URL points to a section
 	const hash = window.location.hash;
 	if ((hash && hash !== "#intro") || isMobile()) {
